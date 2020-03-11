@@ -1,0 +1,56 @@
+
+.example-icon {
+    padding: 0 10px;
+  } 
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+.body {
+  width: 100%;
+}
+
+.sec {
+  float: left;
+  /* width: 80%; */
+}
+
+.sec2 {
+  float: left;
+  width: 40%;
+}
+
+.sec3 {
+  margin: auto;
+  width: 60%;
+}
+
+.sec3 mat-form-field, .sec2 mat-form-field {
+  width: 100%;
+}
+
+.sec3 button, .sec2 button {
+  margin: 5px
+}
+
+mat-card {
+  margin: 50px; 
+  /* margin: auto;  */
+}
+
+table {
+  margin: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table td,th {
+  padding: 15px;
+  margin: 5px;
+  border: 0.5px solid black;
+}
+
+.icon-mini{
+  width: 40px
+}
+ 

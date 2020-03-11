@@ -1,0 +1,4 @@
+1,Sitromol,3400,98,birnma tekst
+2,Trimol,1800,25,urraaaaaa
+3,Analgin,1200,43,some desc
+4,Fratmasel,123000,99,test

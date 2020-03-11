@@ -1,0 +1,105 @@
+<header>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span><i style="width: 200px" class="fa fa-database" aria-hidden="true"></i> </span>
+            <span class="example-spacer"></span> 
+          </mat-toolbar-row>
+    </mat-toolbar>
+</header>
+ 
+<mat-tab-group style="width: 80%;margin:auto" [selectedIndex]="selected.value"
+                                  (selectedIndexChange)="selected.setValue($event)">
+  <mat-tab label="C" > 
+    <div class="sec3">
+      
+      <div [formGroup]="checkoutForm" >
+      <mat-card >
+          <mat-form-field>
+              <input type="text" matInput placeholder="Name.." formControlName="name" name="name" >
+          </mat-form-field> 
+          <mat-form-field>
+              <input type="number" matInput placeholder="Price.." formControlName="price" name="price" >
+          </mat-form-field> 
+          <mat-form-field>
+              <input type="number" matInput placeholder="Count.." formControlName="count" name="count" >
+          </mat-form-field> 
+          <mat-form-field>
+              <textarea  matInput placeholder="Description.." name="description" formControlName="description" cols="30" rows="10" ></textarea>
+          </mat-form-field> 
+  
+          <button [disabled]="checkoutForm.invalid" type="button" mat-raised-button class="btn btn-success" (click)="save()"> Save </button> 
+       
+      </mat-card>
+    </div>
+     </div>  
+  </mat-tab>
+  <mat-tab label="R U D" > 
+    <div class="body">
+      <div class="sec" [style.width]=" ( updSelected ? '60%' : '90%' ) ">
+          <mat-card >
+  
+              <mat-accordion> 
+                  <mat-expansion-panel *ngFor="let pharm of pharms"  >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{ pharm.name }}
+                      </mat-panel-title>
+                      <mat-panel-description>
+                         
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <table>
+                      <thead>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                        <th>Description</th> 
+                      </thead>
+                      <tbody>
+                        <tr>
+                        <td>{{pharm.id}}</td>
+                        <td>{{pharm.name}}</td>
+                        <td>{{pharm.price | currency:'UZS: ':'code' }} </td>
+                        <td>{{pharm.count}}</td>
+                        <td>{{pharm.description}}</td> 
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                          <button mat-icon-button aria-lable="Edit this pharm" color="primary" (click)="selectPharm(pharm.id)"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                          <button mat-icon-button aria-lable="Remove this pharm" color="warn" (click)="delete(pharm.id)"><i class="fa fa-remove" aria-hidden="true"></i></button>
+                  </mat-expansion-panel>
+                </mat-accordion>
+          </mat-card>
+      </div>
+      
+     <div *ngIf="updSelected" class="sec2"> <!--  -->
+       <div [formGroup]="updPharm" >
+        <mat-card >
+            <mat-form-field>
+                <input formControlName="name" type="text" matInput placeholder="Name.."  >
+            </mat-form-field> 
+            <mat-form-field>
+                <input formControlName="price" type="number" pattern="[0-9]*" matInput placeholder="Price.."  >
+            </mat-form-field> 
+            <mat-form-field>
+                <input formControlName="count" type="number" matInput placeholder="Count.."  >
+            </mat-form-field> 
+            <mat-form-field>
+                <input formControlName="description" type="text" matInput placeholder="Description.."  >
+            </mat-form-field> 
+    
+            <button mat-raised-button color="primary" (click)="update()"> Update </button>
+            <button mat-raised-button color="accent" (click)="clear()"> Clear </button>
+        </mat-card>
+    </div>
+     </div>
+  </div>
+  </mat-tab> 
+</mat-tab-group>
+
+
+
+ 
